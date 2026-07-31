@@ -1,0 +1,16 @@
+# Node / Angular
+**/node_modules/
+**/.angular/
+**/dist/
+
+# Java / Spring Boot
+**/target/
+**/.settings/
+**/.classpath
+**/.project
+**/.factorypath
+
+# IDEs
+.vscode/
+.idea/
+*.iml
