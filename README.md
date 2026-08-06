@@ -1,90 +1,95 @@
-# Catálogo de Carros (Spring Boot + Angular + PostgreSQL)
+# 🏎️ Catálogo de Carros (Spring Boot + Angular + PostgreSQL)
 
-Projeto para gerenciamento e visualização de marcas e modelos de carros.
+Aplicação Web Full Stack desenvolvida para o **Trabalho Prático do SENAI de Implantação de Sistemas**. A aplicação permite o gerenciamento completo (CRUD) de marcas e modelos de veículos, com persistência relacional e interface moderna com tema esportivo.
 
-> **Nota**: Para consultar os requisitos técnicos e critérios de avaliação completos, veja o arquivo [projeto.md](projeto.md).
+---
 
-## Tecnologias Utilizadas
-- Spring Boot
-- Angular
-- PostgreSQL
-- Angular Material
+## 📌 O que a Aplicação Faz
 
-## Estrutura de Páginas
-- Página 1: Marcas de carros
-- Página 2: Modelos por marcas
-- Página 3: Sobre o projeto (Tecnologias, libs e frameworks)
+- **Gerenciamento de Marcas**: Cadastro, listagem, edição e exclusão de marcas de carros.
+- **Gerenciamento de Modelos**: Cadastro, listagem, edição e exclusão de modelos associados às marcas.
+- **Exclusão Segura**: Alerta de confirmação exibindo os modelos vinculados à marca antes de confirmar a exclusão.
+- **Página Sobre**: Apresentação detalhada das tecnologias, bibliotecas e frameworks utilizados no projeto.
+- **Iniciador Simplificado**: Painel gráfico compacto no canto da tela para iniciar e encerrar backend e frontend com 1 clique.
 
-## Passo a Passo de Execução
+---
 
-### Passo 2: Componentes e Serviços Criados
-- Componente `marcas` em `frontend/src/app/pages/marcas`.
-- Componente `modelos` em `frontend/src/app/pages/modelos`.
-- Componente `sobre` em `frontend/src/app/pages/sobre`.
-- Componente `navbar` em `frontend/src/app/components/navbar`.
-- Serviço `carro` em `frontend/src/app/services/carro.service.ts`.
+## 🚀 Tecnologias Utilizadas
 
-### Passo 3: Navbar e Roteamento Concluídos
-- Componente `navbar` integrado no `app.component.html`.
-- Rotas das 3 páginas vinculadas à barra de navegação.
+### **Backend**
+- **Java 17** & **Spring Boot 3**
+- **Spring Data JPA** & **Hibernate** (ORM)
+- **PostgreSQL** (Banco de Dados Relacional)
+- **Lombok** (Produtividade de código)
+- **Maven** (Gerenciamento de dependências e build)
 
-### Passo 4: Serviço Carro e Mock CRUD Implementados
-- Criadas interfaces `Marca` e `Modelo` em `frontend/src/app/services/carro.ts`.
-- Criado `CarroService` com dados mockados e métodos CRUD (`GET`, `POST`, `PUT`, `DELETE`).
+### **Frontend**
+- **Angular 19** (Framework SPA Standalone)
+- **TypeScript** & **RxJS** (Programação Reativa)
+- **HttpClientModule** (Comunicação com API REST)
+- **Angular Material** (Ícones e componentes UI)
+- **SCSS** (Estilização customizada com tema dark esportivo e efeito neon)
 
-### Passo 5: Telas de Marcas e Modelos Concluídas
-- Formulários e tabelas criados em `marcas` (`marcas.ts` e `marcas.html`).
-- Formulários e tabelas criados em `modelos` (`modelos.ts` e `modelos.html`).
+---
 
-### Passo 6: Entidades JPA Concluídas
-- Criada entidade `Marca` em `backend/src/main/java/br/com/alef/senai/domain/Marca.java`.
-- Criada entidade `Modelo` em `backend/src/main/java/br/com/alef/senai/domain/Modelo.java` com relacionamento `@ManyToOne`.
+## 🛠️ O que Foi Implementado
 
-### Passo 7: Repositories JPA Concluídos
-- Criada interface `MarcaRepository` em `backend/src/main/java/br/com/alef/senai/repository/MarcaRepository.java`.
-- Criada interface `ModeloRepository` em `backend/src/main/java/br/com/alef/senai/repository/ModeloRepository.java`.
+1. **Arquitetura Backend (REST API)**:
+   - Entidades `Marca` e `Modelo` mapeadas com JPA (`@ManyToOne` e `@JoinColumn`).
+   - Repositórios `MarcaRepository` e `ModeloRepository` com exclusão em cascata.
+   - Controllers REST (`/api/marcas` e `/api/modelos`) com suporte a CORS (`@CrossOrigin("*")`).
 
-### Passo 8: Controllers REST Concluídos
-- Criada classe `MarcaController` em `backend/src/main/java/br/com/alef/senai/controller/MarcaController.java`.
-- Criada classe `ModeloController` em `backend/src/main/java/br/com/alef/senai/controller/ModeloController.java`.
+2. **Interface Frontend (Angular 19)**:
+   - Componentes Standalone (`Navbar`, `Marcas`, `Modelos`, `Sobre`).
+   - Serviço reativo `CarroService` consumindo endpoints REST.
+   - Formulários dinâmicos de cadastro e edição de registros.
+   - Confirmação personalizada de deleção informando os modelos vinculados.
+   - Design System esportivo dark com gradientes, efeitos neon e carros de fundo.
 
-### Passo 9: Serviço HTTP Concluído
-- Atualizado `CarroService` em `frontend/src/app/services/carro.ts` para integrar com a API REST usando `HttpClient` e `Observable`.
+3. **Automação & Execução**:
+   - `start.bat` & `start.ps1`: Painel GUI no canto superior da tela para controlar a execução dos servidores backend e frontend sem poluir a área de trabalho.
 
-### Passo 10: Componentes Angular Integrados
-- Atualizado `marcas.ts` para consumir `CarroService` via `subscribe`.
-- Atualizado `modelos.ts` para consumir `CarroService` via `subscribe`.
+---
 
-### Passo 11: Templates HTML Corrigidos
-- Ajustadas diretivas `*ngFor` e variáveis nos botões de ação em `marcas.html`.
-- Ajustadas diretivas `*ngFor`, referências de marcas e método `cancelarEdicao()` em `modelos.html`.
+## 📂 Estrutura de Endpoints REST
 
-### Passo 12: Configuração e Execução Final Concluídas
-- Configurado `provideHttpClient()` no `app.config.ts`.
-- Aplicação Full Stack pronta para execução integrada (Spring Boot + Angular + PostgreSQL).
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `GET` | `/api/marcas` | Listar todas as marcas |
+| `POST` | `/api/marcas` | Cadastrar nova marca |
+| `PUT` | `/api/marcas/{id}` | Atualizar marca existente |
+| `DELETE` | `/api/marcas/{id}` | Deletar marca e seus modelos |
+| `GET` | `/api/modelos` | Listar todos os modelos |
+| `POST` | `/api/modelos` | Cadastrar novo modelo com marca |
+| `PUT` | `/api/modelos/{id}` | Atualizar modelo existente |
+| `DELETE` | `/api/modelos/{id}` | Deletar modelo |
 
-## Como Executar a Aplicação
+---
 
-### Backend (Spring Boot)
-1. Navegar até a pasta `backend`.
-2. Executar o comando: `./mvnw spring-boot:run` (ou via IDE).
-3. O servidor subirá na porta `8080` (`http://localhost:8080/api/marcas` e `http://localhost:8080/api/modelos`).
+## ⚡ Como Executar a Aplicação
 
-### Frontend (Angular)
-1. Navegar até a pasta `frontend`: `cd frontend`.
-2. Instalar dependências se necessário: `npm install`.
-3. Executar o servidor de desenvolvimento: `npm start` ou `ng serve`.
-4. Abrir o navegador em `http://localhost:4200`.
+### **Opção 1: Via Iniciador Rápido (Recomendado)**
+Dê um duplo clique no arquivo `start.bat` na raiz do projeto. Um mini painel surgirá no canto superior esquerdo para controlar os servidores e abrir o navegador.
 
+### **Opção 2: Execução Manual**
 
+#### **1. Banco de Dados**
+Certifique-se de que o PostgreSQL está rodando com a base `senai_db` criada:
+- **Database**: `senai_db`
+- **Usuário**: `admin`
+- **Senha**: `549521`
 
+#### **2. Backend (Spring Boot)**
+```powershell
+cd backend
+.\mvnw.cmd spring-boot:run
+```
+*(Servidor em `http://localhost:8080`)*
 
-
-
-
-
-
-
-
-
-
+#### **3. Frontend (Angular)**
+```powershell
+cd frontend
+npm install
+npm start
+```
+*(Aplicação em `http://localhost:4200`)*
