@@ -17,7 +17,7 @@ Aplicação Web Full Stack desenvolvida para o **Trabalho Prático do SENAI de I
 ## 🚀 Tecnologias Utilizadas
 
 ### **Backend**
-- **Java 17** & **Spring Boot 3**
+- **Java 21** & **Spring Boot 3 / 4**
 - **Spring Data JPA** & **Hibernate** (ORM)
 - **PostgreSQL** (Banco de Dados Relacional)
 - **Lombok** (Produtividade de código)
